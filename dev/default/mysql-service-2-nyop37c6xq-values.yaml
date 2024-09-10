@@ -4,23 +4,23 @@ service:
     l4_protocol: TCP
     port: 3306
     targetPort: 3306
-  label: mysql-service-1-p1aeja49w5
-  name: mysql-service-1-p1aeja49w5
-  selector: mysql-service-1-p1aeja49w5
+  label: mysql-service-2-nyop37c6xq
+  name: mysql-service-2-nyop37c6xq
+  selector: mysql-service-2-nyop37c6xq
   type:
   - ClusterIP
   - NodePort
 statefulset:
-  name: mysql-service-1-p1aeja49w5
+  name: mysql-service-2-nyop37c6xq
   spec:
-    name: mysql-service-1-p1aeja49w5
-    servicename: mysql-service-1-p1aeja49w5
+    name: mysql-service-2-nyop37c6xq
+    servicename: mysql-service-2-nyop37c6xq
   replicas: -@replicas@-
   container:
-    name: mysql-service-1-p1aeja49w5
+    name: mysql-service-2-nyop37c6xq
     port: 3306
   volume:
-    name: pvc-mysql-service-1-p1aeja49w5
+    name: pvc-mysql-service-2-nyop37c6xq
   resource:
     request:
       memory: -@requestMemory@-
@@ -29,7 +29,7 @@ statefulset:
       memory: -@limitsMemory@-
       cpu: -@limitsCpu@-
   hpa:
-    name: hpa-mysql-service-1-p1aeja49w5
+    name: hpa-mysql-service-2-nyop37c6xq
     minReplicas: -@minReplicas@-
     maxReplicas: -@maxReplicas@-
     cpu: -@cpuAutoScale@-
@@ -37,17 +37,17 @@ statefulset:
 namespace: -@namespace@-
 mysql:
   configmap:
-    name: config-mysql-service-1-p1aeja49w5
+    name: config-mysql-service-2-nyop37c6xq
   secret:
-    name: secret-mysql-service-1-p1aeja49w5
+    name: secret-mysql-service-2-nyop37c6xq
     username: admin
     password: "Twolinecode12#"
     root_password: "Twolinecode12#"
     database: admin
-    dbhost: mysql-service-1-p1aeja49w5
+    dbhost: mysql-service-2-nyop37c6xq
     port: 3306
   statefulset:
-    name: mysql-service-1-p1aeja49w5
+    name: mysql-service-2-nyop37c6xq
     image:
       url: registry.turacocloud.com/turaco-common/mysql:8.0.32
 secret:
@@ -59,7 +59,7 @@ secret:
     password: -@secretKey@-
     email: info@twolinecode.com
 pvc:
-  name: pvc-mysql-service-1-p1aeja49w5
+  name: pvc-mysql-service-2-nyop37c6xq
   storageClass: tlc-block-sc
   size: 5Gi
   accessMode: ReadWriteOnce
