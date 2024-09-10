@@ -43,7 +43,7 @@ deployment:
       cpu: -@limitsCpu@-
   backing: 
     mysql:
-      name: secret-mysql-service-1-p1aeja49w5
+      name: secret-mysql-service-2-nyop37c6xq
   secret:
     name: []
   configmap:
